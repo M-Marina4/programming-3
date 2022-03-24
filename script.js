@@ -1,65 +1,6 @@
+var socket = io();
+
 let side = 15;
-var matrix = [];
-let grassArr = [];
-let grassEatArr = [];
-let gishatichArr = [];
-let virusArr = [];
-let virusEatArr = [];
-
-
-function matrixGen(matY, matX, khot, khotaker, gishatich, virus, virusdestroy) {
-    for (let i = 0; i < matY; i++) {
-        matrix[i] = [];
-        for (let j = 0; j < matX; j++) {
-            matrix[i][j] = 0;
-        }
-    }
-    for (let i = 0; i < khot; i++) {
-        let y = Math.floor(Math.random() * matY);
-        let x = Math.floor(Math.random() * matX);
-        if (matrix[y][x] == 0) {
-            matrix[y][x] = 1;
-        }
-    }
-    for (let i = 0; i < khotaker; i++) {
-        let y = Math.floor(Math.random() * matY);
-        let x = Math.floor(Math.random() * matX);
-        if (matrix[y][x] == 0) {
-            matrix[y][x] = 2;
-        }
-        grassEatArr.push(new GrassEater(x, y));
-    }
-    for (let i = 0; i < gishatich; i++) {
-        let y = Math.floor(Math.random() * matY);
-        let x = Math.floor(Math.random() * matX);
-        if (matrix[y][x] == 0) {
-            matrix[y][x] = 3;
-        }
-        gishatichArr.push(new Gishatich(x, y));
-    }
-
-    for (let i = 0; i < virus; i++) {
-        let y = Math.floor(Math.random() * matY);
-        let x = Math.floor(Math.random() * matX);
-        if (matrix[y][x] == 0) {
-            matrix[y][x] = 4;
-        }
-        virusArr.push(new Virus(x, y));
-    }
-
-    for (let i = 0; i < virusdestroy; i++) {
-        let y = Math.floor(Math.random() * matY);
-        let x = Math.floor(Math.random() * matX);
-        if (matrix[y][x] == 0) {
-            matrix[y][x] = 5;
-        }
-        virusEatArr.push(new VirusEater(x, y));
-       
-    }
-   
-}
-
-
 
 let value = 0;
 function mouseClicked() {
@@ -81,39 +22,19 @@ function mouseClicked() {
 
 
 function setup() {  
-   
-    matrixGen(50, 50, 500, 300, 100, 10, 10);
+
     frameRate(5);
     createCanvas(matrix[0].length * side, matrix.length * side);
     background('#ADD8E6');
     noStroke();
-    
-
-    for (let y = 0; y < matrix.length; y++) {
-        for (let x = 0; x < matrix[y].length; x++) {
-            if (matrix[y][x] == 1) {
-                grassArr.push(new Grass(x, y, 1));
-            } else if (matrix[y][x] == 2) {
-                grassEatArr.push(new GrassEater(x, y, 2));
-            } else if (matrix[y][x] == 3) {
-                gishatichArr.push(new Gishatich(x, y, 3));
-            } 
-            else if (matrix[y][x] == 4) {
-                virusArr.push(new Virus(x, y, 4));
-            } 
-            else if(matrix[x][y]==5){
-                virusEatArr.push(new VirusEater(x,y,5));
-            }
-        }
-    }
    
    
 }
 
 
 
-function draw() {
-  
+function nkarel(matrix) {
+    console.log(matrix);
     for (let y = 0; y < matrix.length; y++) {
         for (let x = 0; x < matrix[y].length; x++) {
 
@@ -150,36 +71,27 @@ function draw() {
         }
     }
 
+    setInterval(
+        function () {
+        socket.on('send matrix', nkarel)
+        },1000
+    )
    
-   
-    for (let i = 0; i < grassArr.length; i++) {
-        grassArr[i].mul();
-
-
-    }
-
-    for (let i = 0; i < grassEatArr.length; i++) {
-        grassEatArr[i].eat();
-      
-
-    }
-
-    for (let i = 0; i < gishatichArr.length; i++) {
-        gishatichArr[i].eat();
-        
-    }
-    for (let i = 0; i < virusArr.length; i++) {
-        virusArr[i].eat();
-      
-    }
-    for (let i = 0; i < virusEatArr.length; i++) {
-        virusEatArr[i].eat();
-        
-    }
-
   
 
 };
+
+function kill() {
+    socket.emit("kill")
+}
+function addGrass() {
+    socket.emit("add grass")
+}
+function addGrassEater() {
+    socket.emit("add grassEater")
+}
+
+
 
 function drawFlower(x, y, d, r, g, b) {
     fill(255,255,0);
