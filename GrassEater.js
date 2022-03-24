@@ -27,8 +27,8 @@ class GrassEater extends LivingCreature {
 
 	mul() {
 		this.multiply++;
-		let emptyCells = this.chooseCell(0);
-		let newCell = random(emptyCells);
+		let emptyCells = super.chooseCell(0)
+                let newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)]
 
 		if (newCell) {
 			let newX = newCell[0];
@@ -43,8 +43,8 @@ class GrassEater extends LivingCreature {
 
 	move() {
 		
-		let emptyCells = this.chooseCell(0);
-		let newCell = random(emptyCells);
+		let emptyCells = super.chooseCell(0)
+                let newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)]
 
 		if (newCell ) {
 
@@ -65,9 +65,8 @@ class GrassEater extends LivingCreature {
 	}
 
 	eat() {
-		let emptyCells = this.chooseCell(1);
-		let newCell = random(emptyCells);
-
+		let emptyCells = super.chooseCell(1)
+                let newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)]
 		if (newCell) {
 
 			let newX = newCell[0];
