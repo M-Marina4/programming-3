@@ -27,9 +27,9 @@ class VirusEater extends LivingCreature {
 	
 	mul() {
 		this.multiply++;
-		let emptyCells = this.chooseCell(0);
-		let newCell = random(emptyCells);
-
+		let emptyCells = super.chooseCell(0)
+                let newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)]
+		
 		if (newCell) {
 			let newX = newCell[0];
 			let newY = newCell[1];
@@ -42,8 +42,8 @@ class VirusEater extends LivingCreature {
 	}
 
 	move() {
-		let emptyCells = this.chooseCell(0);
-		let newCell = random(emptyCells);
+		let emptyCells = super.chooseCell(0)
+                let newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)]
 		// console.log(newCell);
 
 		if (newCell) {
@@ -63,8 +63,8 @@ class VirusEater extends LivingCreature {
 	}
 
 	eat() {
-		let emptyCells = this.chooseCell(4);
-		let newCell = random(emptyCells);
+		let emptyCells = super.chooseCell(4)
+                let newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)]
 		if (newCell) {
 
 			let newX = newCell[0];
