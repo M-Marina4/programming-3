@@ -2,8 +2,8 @@ class Grass extends LivingCreature {
 
 	mul() {
 		this.multiply++;
-		let emptyCells = this.chooseCell(0);
-		let newCell = random(emptyCells);
+		let emptyCells = super.chooseCell(0)
+                let newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)]
 
 
 		if (newCell && this.multiply >= 8) {
