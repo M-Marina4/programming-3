@@ -1,5 +1,5 @@
 var socket = io();
-
+let matrix = []
 let side = 15;
 
 let value = 0;
