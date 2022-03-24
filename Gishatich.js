@@ -43,8 +43,8 @@ class Gishatich extends LivingCreature{
 
 	mul() {
 		this.multiply++;
-		let emptyCells = this.chooseCell(0);
-		let newCell = random(emptyCells);
+		let emptyCells = super.chooseCell(0)
+                let newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)]
 
 		if (newCell) {
 			let newX = newCell[0];
@@ -58,8 +58,8 @@ class Gishatich extends LivingCreature{
 
 	move() {
 		
-		let emptyCells = this.chooseCell(0);
-		let newCell = random(emptyCells);
+		let emptyCells = super.chooseCell(0)
+                let newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)]
 
 		if (newCell && this.energy >= 0) {
 			let newX = newCell[0];
@@ -79,8 +79,8 @@ class Gishatich extends LivingCreature{
 	}
 
 	eat() {
-		let emptyCells = this.chooseCell(2);
-		let newCell = random(emptyCells);
+		let emptyCells = super.chooseCell(2)
+                let newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)]
 
 		if (newCell) {
 			this.energy++;
