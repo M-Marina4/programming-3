@@ -40,8 +40,8 @@ class Virus extends LivingCreature {
 
 	mul() {
 		this.multiply++;
-		let emptyCells = this.chooseCell(0);
-		let newCell = random(emptyCells);
+		let emptyCells = super.chooseCell(0)
+                let newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)]
 
 		if (newCell) {
 			let newX = newCell[0];
@@ -54,9 +54,8 @@ class Virus extends LivingCreature {
 	}
 
 	move() {
-		
-		let emptyCells = this.chooseCell(0);
-		let newCell = random(emptyCells);
+	    let emptyCells = super.chooseCell(0)
+            let newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)]
 
 		if (newCell) {
 			let newX = newCell[0];
@@ -77,9 +76,9 @@ class Virus extends LivingCreature {
 
 	eat() {
 
-		let grassCells = this.chooseCell(1);
-		let gishatichCells = this.chooseCell(2);
-		let grassReal = this.chooseCell(3);
+		let grassCells = super.chooseCell(1);
+		let gishatichCells = super.chooseCell(2);
+		let grassReal = super.chooseCell(3);
 		let all = grassCells.concat(gishatichCells, grassReal);
 		let newCell = random(all);
 
