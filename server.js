@@ -81,7 +81,7 @@ function matrixGen(matY, matX, khot, khotaker, gishatich, virus, virusdestroy) {
 }
 matrix = matrixGen(50, 50, 500, 300, 100, 10, 10)
 
-io.sockets.emit('send matrix', matrix );
+
 
 
 function createObject() {
@@ -103,11 +103,11 @@ function createObject() {
         }
     }
     
-    io.sockets.emit('send matrix', matrix)
+
 
 
 }
-
+createObject();
 
 let exanak = 0;
 let weather = "winter"
@@ -159,6 +159,3 @@ function game() {
 
 setInterval(game, 5000);
 
-io.on('connection', function (socket) {
-    createObject()
-})
