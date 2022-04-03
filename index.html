@@ -1,28 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src="socket.io/socket.io.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.14/p5.js"></script>
-    <script src="script.js"></script>
-    <script src="p5.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/addons/p5.dom.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/addons/p5.sound.min.js"></script>
-    <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
     <title>Document</title>
+    
 </head>
 <body>
- 
-    <audio id="mySound" src="assets/song.mp3"></audio>
-    <a onclick="setTimeout();"> </a>
+    <script src="socket.io/socket.io.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.14/p5.js"></script>
+    <script src="script.js"></script> 
+    
+    
+    <a onclick=""> </a>
    
     <div class="warning">
         <div id="animal-face">🦊</div>
         <div id="warning-message">Press and you will see magic!!! </div>
     </div>
 
-         
+    <button class= "event" onclick="kill()">Kill All💀</button>
+    <button class= "event" onclick="addGrass()">Add Grass☘️</button>
+    <button class= "event" onclick="addGrassEater()">Add Grasseat🐄</button>
+    <button class= "event" onclick="addGishatich()">Add Gishatich🐩</button>
+    <button class= "event" onclick="addVirus()">Add Virus🦟</button>
+    <button class= "event" onclick="addVirusEater()">Add virusEater🧚‍♂️</button>
 </body>
 </html>

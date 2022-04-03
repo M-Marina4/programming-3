@@ -1,35 +1,17 @@
-class VirusEater extends LivingCreature {
+let LivingCreature = require('./LivingCreature');
+
+module.exports = class VirusEater extends LivingCreature {
 	constructor(x, y) {
 		super(x, y);
 		this.energy = 10;
 		this.directions = [];
 	}
 
-
-	getNewCoordinates() {
-		this.directions = [
-			[this.x - 1, this.y - 1],
-			[this.x, this.y - 1],
-			[this.x + 1, this.y - 1],
-			[this.x - 1, this.y],
-			[this.x + 1, this.y],
-			[this.x - 1, this.y + 1],
-			[this.x, this.y + 1],
-			[this.x + 1, this.y + 1]
-		];
-	}
-    
-
-	chooseCell(character) {
-		this.getNewCoordinates();
-		return super.chooseCell(character);
-	}
-	
 	mul() {
 		this.multiply++;
-		let emptyCells = super.chooseCell(0)
-                let newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)]
-		
+		let emptyCells = this.chooseCell(0)
+		let newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)]
+
 		if (newCell) {
 			let newX = newCell[0];
 			let newY = newCell[1];
@@ -42,8 +24,8 @@ class VirusEater extends LivingCreature {
 	}
 
 	move() {
-		let emptyCells = super.chooseCell(0)
-                let newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)]
+		let emptyCells = this.chooseCell(0)
+		let newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)]
 		// console.log(newCell);
 
 		if (newCell) {
@@ -63,8 +45,8 @@ class VirusEater extends LivingCreature {
 	}
 
 	eat() {
-		let emptyCells = super.chooseCell(4)
-                let newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)]
+		let emptyCells = this.chooseCell(4)
+		let newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)]
 		if (newCell) {
 
 			let newX = newCell[0];
